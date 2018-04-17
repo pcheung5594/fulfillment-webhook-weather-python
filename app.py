@@ -52,12 +52,12 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "DBLPSearch":
         return {}
-    baseurl = "http://ec2-13-58-228-66.us-east-2.compute.amazonaws.com:8080/CloudComputing/article?"
+    baseurl = "https://ec2-18-188-139-143.us-east-2.compute.amazonaws.com:8443/CloudComputing/article"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
     #yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
-    yql_url = requests.post(baseurl, data = yql_query)
+    yql_url = requests.post(baseurl, json = req.get("result"))
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
