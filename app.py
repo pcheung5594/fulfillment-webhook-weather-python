@@ -50,7 +50,7 @@ def webhook():
 
 
 def processRequest(req):
-    if req.get("result").get("action") != "DBLPSearch":
+    if req.get("result").get("action") != "dblpsearch":
         return {}
     baseurl = "https://ec2-18-188-139-143.us-east-2.compute.amazonaws.com:8443/CloudComputing/article"
     yql_query = makeYqlQuery(req)
