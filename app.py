@@ -52,11 +52,12 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "DBLPSearch":
         return {}
-    baseurl = "https://query.yahooapis.com/v1/public/yql?"
+    baseurl = "http://ec2-13-58-228-66.us-east-2.compute.amazonaws.com:8080/CloudComputing/article?"
     yql_query = makeYqlQuery(req)
     if yql_query is None:
         return {}
-    yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+    #yql_url = baseurl + urlencode({'q': yql_query}) + "&format=json"
+    yql_url = requests.post(baseurl, data = yql_query)
     result = urlopen(yql_url).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
@@ -66,11 +67,11 @@ def processRequest(req):
 def makeYqlQuery(req):
     result = req.get("result")
     parameters = result.get("parameters")
-    city = parameters.get("geo-city")
-    if city is None:
-        return None
+    title = parameters.get("title")
+    author = parameters.get("author")
+    year = parameters.get("year")
 
-    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
+    return {'title' : title, 'author' : author, 'year' : year}
 
 
 def makeWebhookResult(data):
