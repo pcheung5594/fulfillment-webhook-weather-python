@@ -64,10 +64,11 @@ def processRequest(req):
     #yql_url = requests.post(baseurl,data = {'key':'value'})
     data1 = urlencode({'key':'value'}).encode()
     req =  Request(baseurl, data=data1) # this will make the method "POST"
-    #resp = urlopen(req)
+    resp = urlopen(req).read()
+    data = json.loads(result)
     #result = urlopen(yql_url).read()
     #data = json.loads(result)
-    data = "test"
+    #data = "test"
     res = makeWebhookResult(data)
     return res
 
