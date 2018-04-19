@@ -67,7 +67,7 @@ def processRequest(req):
     data2 = {"id": "d33afbce-baec-4194-b677-55e3a62ffd88","timestamp": "2018-03-31T12:03:52.095Z","lang": "en","result": {"source": "agent","resolvedQuery": "Cloud Computing","action": "","actionIncomplete": False,"parameters": {"authors": ["Cristina Morariu"],"title": ["Service and Product"],"year": ["2014"],"id": ""},"contexts": [],"metadata": {"intentId": "7f288f89-818a-495e-ae25-1ac40e63d564","webhookUsed": "true","webhookForSlotFillingUsed": "false","intentName": "look_for_article"},"fulfillment": {"speech": "", "messages": [{"type": 0,"speech": ""}]},"score": 1},"status": {"code": 200,"errorType": "success","webhookTimedOut": False},"sessionId": "4e513bc9-4744-4f63-87d8-68f08f2f33c8"}
     #yql_url = Request(baseurl, json.dumps(data2), headers={'User-Agent': 'Mozilla/5.0', 'Content-type': 'application/json', 'Accept': 'application/json'}) # this will make the method "POST"
     yql_url = Request(baseurl, json.dumps(data2))
-    yql_url.add_header('User-agent', 'Mozilla 5.10')
+    #yql_url.add_header('User-agent', 'Mozilla 5.10')
     #response = urllib2.urlopen(yql_url)
     #yql_url.add_header('Accept', 'application/json')
     #resp = urlopen(yql_url).read()
