@@ -24,6 +24,7 @@ from urllib.error import HTTPError
 
 import json
 import os
+import ssl
 
 from flask import Flask
 from flask import request
@@ -53,6 +54,7 @@ def processRequest(req):
     if req.get("result").get("action") != "dblpsearch":
         return {}
     baseurl = "https://ec2-18-188-139-143.us-east-2.compute.amazonaws.com:8443/CloudComputing/article"
+    context = ssl._create_unverified_context()
     #yql_query = makeYqlQuery(req)
     #if yql_query is None:
     #    return {}
