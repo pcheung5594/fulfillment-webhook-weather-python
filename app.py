@@ -21,7 +21,7 @@ install_aliases()
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
-
+import urllib2
 import json
 import os
 
@@ -65,6 +65,7 @@ def processRequest(req):
     #data1 = urlencode({'id': '76314cf2-1a90-4388-a7f8-f7f786a10827', 'timestamp': '2018-04-17T09:29:01.184Z', 'lang': 'en', 'result': {'source': 'agent', 'resolvedQuery': 'Cloud Computing', 'action': 'DBLPSearch', 'actionIncomplete': False, 'parameters': {'author': ['CS John'], 'title': ['Cloud Computing'], 'year': ['2011'], 'id': ''}, 'contexts': [], 'metadata': {'intentId': '7f288f89-818a-495e-ae25-1ac40e63d564', 'webhookUsed': 'true', 'webhookForSlotFillingUsed': 'false', 'webhookResponseTime': 5035, 'intentName': 'look_for_article'}, 'fulfillment': {'speech': 'We would like to suggest you to read "Cocoa: Dynamic Container-Based Group Buying Strategies for Cloud Computing" from this John C. S. Lui and it is published in 2011.', 'messages': [{'type': 0, 'speech': 'We would like to suggest you to read "Cocoa: Dynamic Container-Based Group Buying Strategies for Cloud Computing" from this  John C. S. Lui and it is published in 2011.'}]}, 'score': 1}, 'status': {'code': 206, 'errorType': 'partial_content', 'errorDetails': 'Webhook call failed. Error: Webhook response was empty.', 'webhookTimedOut': False}, 'sessionId': '67a43021-aac2-4352-a878-ecbf4f612045'}).encode()
     data2 = {"id": "d33afbce-baec-4194-b677-55e3a62ffd88","timestamp": "2018-03-31T12:03:52.095Z","lang": "en","result": {"source": "agent","resolvedQuery": "Cloud Computing","action": "","actionIncomplete": False,"parameters": {"authors": ["Cristina Morariu"],"title": ["Service and Product"],"year": ["2014"],"id": ""},"contexts": [],"metadata": {"intentId": "7f288f89-818a-495e-ae25-1ac40e63d564","webhookUsed": "true","webhookForSlotFillingUsed": "false","intentName": "look_for_article"},"fulfillment": {"speech": "", "messages": [{"type": 0,"speech": ""}]},"score": 1},"status": {"code": 200,"errorType": "success","webhookTimedOut": False},"sessionId": "4e513bc9-4744-4f63-87d8-68f08f2f33c8"}
     yql_url = Request(baseurl, json.dumps(data2), headers={'Content-type': 'application/json', 'Accept': 'application/json'}) # this will make the method "POST"
+    response = urllib2.urlopen(yql_url)
     #yql_url.add_header('Accept', 'application/json')
     #resp = urlopen(yql_url).read()
     #data = json.loads(resp)
