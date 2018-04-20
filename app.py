@@ -57,8 +57,8 @@ def processRequest(req):
     context = ssl._create_unverified_context()
     
     #data2 = b'{"id": "d33afbce-baec-4194-b677-55e3a62ffd88", "timestamp": "2018-03-31T12:03:52.095Z", "lang": "en", "result": {"source": "agent", "resolvedQuery": "Cloud Computing", "action": "", "actionIncomplete": False, "parameters": {"authors": ["Anna M. Bianchi"], "title": ["Role of signal"], "year": ["2007"], "id": ""}, "contexts": [], "metadata": {"intentId": "7f288f89-818a-495e-ae25-1ac40e63d564", "webhookUsed": "true", "webhookForSlotFillingUsed": "false", "intentName": "look_for_article"}, "fulfillment": {"speech": "", "messages": [{"type": 0, "speech": ""}]}, "score": 1}, "status": {"code": 200, "errorType": "success", "webhookTimedOut": False}, "sessionId": "4e513bc9-4744-4f63-87d8-68f08f2f33c8"}'
-    #data2 = json.dumps(req).replace("\",'').encode()
-    data2 = json.dumps(req)
+    data2 = json.dumps(req).replace("\\",'')[1:-1].encode()
+    
     #yql_url = Request(baseurl, data2, headers={'User-agent': 'Mozilla 5.10', 'Content-type': 'application/json', 'Accept': 'application/json'})
     #try:
     #    handler = urlopen(yql_url)
