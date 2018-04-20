@@ -65,7 +65,7 @@ def processRequest(req):
         print(e)
     datax = json.loads(handler.read().decode().replace("\\",'')[1:-1])
     #data = "test"
-    res = makeWebhookResult(req)
+    res = makeWebhookResult(datax)
     return res
 
 
@@ -109,14 +109,14 @@ def makeWebhookResult(data):
 
     #print("Response:")
     #print(speech)
-    
+    x = json.dumps(data)
     return {
         #"speech": speech,
         #"displayText": speech,
         "speech": "test",
         #"speech": data['displayText'],
         #"displayText": data['displayText'],
-        "displayText" : "test",
+        "displayText" : x,
         # "data": data,
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
