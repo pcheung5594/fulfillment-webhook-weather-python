@@ -55,7 +55,7 @@ def processRequest(req):
         return {}
     baseurl = "http://ec2-18-217-98-95.us-east-2.compute.amazonaws.com:8080/CloudComputing/article"
     context = ssl._create_unverified_context()
-    result = req.get("result")
+    #result = req.get("result")
     #yql_query = makeYqlQuery(req)
     #if yql_query is None:
     #    return {}
@@ -73,7 +73,8 @@ def processRequest(req):
     datax = json.loads(handler.read().decode().replace("\\",'')[1:-1])
     #data = "test"
     res = makeWebhookResult(datax)
-    return res
+    #return res
+    return req
 
 
 def makeYqlQuery(req):
@@ -121,7 +122,8 @@ def makeWebhookResult(data):
         #"speech": speech,
         #"displayText": speech,
         "speech": data['displayText'],
-        "displayText": data['displayText'],
+        #"displayText": data['displayText'],
+        "displayText" : json.dumps(data),
         # "data": data,
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
