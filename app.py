@@ -68,7 +68,7 @@ def processRequest(req):
         handler = urlopen(yql_url)
     except HTTPError as e:
         print(e)
-    #data = json.loads(resp)
+    datax = json.loads(json.loads(handler.decode().replace("\\",'')[1:-1]))
     #result = urlopen(yql_url).read()
     #data = json.loads(result)
     data = "test"
