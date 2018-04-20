@@ -72,9 +72,9 @@ def processRequest(req):
         print(e)
     datax = json.loads(handler.read().decode().replace("\\",'')[1:-1])
     #data = "test"
-    res = makeWebhookResult(datax)
+    res = makeWebhookResult(req)
     #return res
-    return req
+    return res
 
 
 def makeYqlQuery(req):
