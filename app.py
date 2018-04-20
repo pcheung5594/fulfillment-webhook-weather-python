@@ -117,14 +117,14 @@ def makeWebhookResult(data):
 
     #print("Response:")
     #print(speech)
-
+    x = json.dumps(data)
     return {
         #"speech": speech,
         #"displayText": speech,
         "speech": "",
         #"speech": data['displayText'],
         #"displayText": data['displayText'],
-        "displayText" : data,
+        "displayText" : x,
         # "data": data,
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
