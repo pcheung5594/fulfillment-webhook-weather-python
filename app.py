@@ -60,13 +60,13 @@ def processRequest(req):
     data2 = json.dumps(req).replace("\\","").encode()
     
     yql_url = Request(baseurl, data2, headers={'User-agent': 'Mozilla 5.10', 'Content-type': 'application/json', 'Accept': 'application/json'})
-    try:
-        handler = urlopen(yql_url)
-    except HTTPError as e:
-        print(e)
-    datax = json.loads(handler.read().decode().replace("\\",'')[1:-1])
+    #try:
+    #    handler = urlopen(yql_url)
+    #except HTTPError as e:
+    #    print(e)
+    #datax = json.loads(handler.read().decode().replace("\\",'')[1:-1])
     #data = "test"
-    res = makeWebhookResult(datax)
+    res = makeWebhookResult(req)
     #return res
     return res
 
@@ -118,7 +118,7 @@ def makeWebhookResult(data):
         "speech": "test",
         #"speech": data['displayText'],
         #"displayText": data['displayText'],
-        "displayText" : data['displayText'],
+        "displayText" : "test",
         # "data": data,
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
