@@ -69,8 +69,8 @@ def processRequest(req):
     except HTTPError as e:
         print(e)
     datax = json.loads(handler.read().decode().replace("\\",'')[1:-1])
-    data = "test"
-    res = makeWebhookResult(data)
+    #data = "test"
+    res = makeWebhookResult(datax)
     return res
 
 
@@ -118,8 +118,8 @@ def makeWebhookResult(data):
     return {
         #"speech": speech,
         #"displayText": speech,
-        "speech": "test",
-        "displayText": "test",
+        "speech": data['displayText'],
+        "displayText": data['displayText'],
         # "data": data,
         # "contextOut": [],
         "source": "apiai-weather-webhook-sample"
