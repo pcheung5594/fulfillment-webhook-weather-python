@@ -68,8 +68,7 @@ def processRequest(req):
         handler = urlopen(yql_url)
     except HTTPError as e:
         print(e)
-    handler.
-    datax = json.loads(json.loads(handler.read().decode().replace("\\",'')[1:-1]))
+    datax = json.loads(handler.read().decode().replace("\\",'')[1:-1])
     data = "test"
     res = makeWebhookResult(data)
     return res
