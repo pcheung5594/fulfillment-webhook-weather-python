@@ -66,7 +66,7 @@ def processRequest(req):
         print(e)
     datax = json.loads(handler.read().decode().replace("\\",'')[1:-1])
     #data = "test"
-    res = makeWebhookResult(data2)
+    res = makeWebhookResult(datax)
     #return res
     return res
 
