@@ -49,7 +49,6 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
-
 def processRequest(req):
     if req.get("result").get("action") != "dblpsearch":
         return {}
@@ -67,16 +66,6 @@ def processRequest(req):
     #data = "test"
     res = makeWebhookResult(datax)
     return res
-
-
-def makeYqlQuery(req):
-    result = req.get("result")
-    parameters = result.get("parameters")
-    title = parameters.get("title")
-    author = parameters.get("author")
-    year = parameters.get("year")
-
-    return {'title' : title, 'author' : author, 'year' : year}
 
 
 def makeWebhookResult(data):
